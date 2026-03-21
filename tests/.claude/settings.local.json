@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv /c/Workspace/test-printer/tests/normal-order.ts /c/Workspace/test-printer/tests/scenarios/normal-order.ts)",
+      "Bash(mv /c/Workspace/test-printer/tests/tse-enable.ts /c/Workspace/test-printer/tests/scenarios/tse-enable.ts)",
+      "Bash(mv /c/Workspace/test-printer/tests/quan-ly-hoa-don.ts /c/Workspace/test-printer/tests/scenarios/quan-ly-hoa-don.ts)"
+    ]
+  }
+}
