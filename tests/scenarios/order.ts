@@ -73,10 +73,10 @@ export async function orderWithDiscountAmount(page: Page) {
     .getByTestId("FloorPlanView")
     .getByText("7", { exact: true })
     .click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByTestId("OrderViewV2").getByText("Miso Soup").click();
-  await page.getByTestId("OrderViewV2").getByText("Spring Rolls").click();
-  await page.getByText("Bruschetta").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("Miso Soup").first().click();
+  await page.getByText("Spring Rolls").first().click();
+  await page.getByText("Bruschetta").first().click();
   await page.getByText("Discount").click();
   await page.getByRole("button", { name: "20", exact: true }).click();
   await page.getByRole("button", { name: "$" }).click();
@@ -96,11 +96,11 @@ export async function orderWithTip(page: Page) {
     .getByTestId("FloorPlanView")
     .getByText("9", { exact: true })
     .click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByTestId("OrderViewV2").getByText("Miso Soup").click();
-  await page.getByText("French Fries").click();
-  await page.getByTestId("OrderViewV2").getByText("Bruschetta").click();
-  await page.getByText("Wakame").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("Miso Soup").first().click();
+  await page.getByText("French Fries").first().click();
+  await page.getByText("Bruschetta").first().click();
+  await page.getByText("Wakame").first().click();
   await page.locator("span").filter({ hasText: "Large - $" }).click();
   await page.getByRole("button", { name: "OK" }).click();
   await page.getByRole("button", { name: "$" }).click();
@@ -118,10 +118,10 @@ export async function orderWithTip(page: Page) {
 
 export async function orderWithServiceCharge(page: Page) {
   await page.getByTestId("FloorPlanView").getByText("11").click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByTestId("OrderViewV2").getByText("French Fries").click();
-  await page.getByText("Garlic Bread").click();
-  await page.getByTestId("OrderViewV2").getByText("Wakame").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("French Fries").first().click();
+  await page.getByText("Garlic Bread").first().click();
+  await page.getByText("Wakame").first().click();
   await page.locator("span").filter({ hasText: "Large - $" }).click();
   await page.getByRole("button", { name: "OK" }).click();
   await page.getByRole("button", { name: "$" }).click();
@@ -139,10 +139,10 @@ export async function orderWithMultiplePaymentMethods(page: Page) {
     .getByTestId("FloorPlanView")
     .getByText("9", { exact: true })
     .click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByTestId("OrderViewV2").getByText("French Fries").click();
-  await page.getByTestId("OrderViewV2").getByText("Garlic Bread").click();
-  await page.getByTestId("OrderViewV2").getByText("Wakame").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("French Fries").first().click();
+  await page.getByText("Garlic Bread").first().click();
+  await page.getByText("Wakame").first().click();
   await page.locator("span").filter({ hasText: "Large - $" }).click();
   await page.getByRole("button", { name: "OK" }).click();
   await page.getByRole("button", { name: "$" }).click();
@@ -167,34 +167,16 @@ export async function orderWithMultiplePaymentMethods(page: Page) {
 }
 
 export async function orderFastCheckout(page: Page) {
-  await page
-    .getByTestId("FloorPlanView")
-    .getByText("9", { exact: true })
-    .click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByTestId("OrderViewV2").getByText("French Fries").click();
-  await page.getByTestId("OrderViewV2").getByText("Garlic Bread").click();
-  await page.getByTestId("OrderViewV2").getByText("Wakame").click();
-  await page.locator("span").filter({ hasText: "Large - $" }).click();
-  await page.getByRole("button", { name: "OK" }).click();
+  await page.getByText("Fast Checkout").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("French Fries").first().click();
+  await page.getByText("Garlic Bread").first().click();
+  await page.getByText("Tabbouleh").first().click();
   await page.getByRole("button", { name: "$" }).click();
-  await page
-    .getByTestId("FloorPlanView")
-    .getByText("9", { exact: true })
-    .click();
-  await page.getByRole("button", { name: "$" }).click();
-  await page.getByText("Multi").click();
-  await page.getByText("Card").click();
-  await page.locator("b").filter({ hasText: /^2$/ }).nth(5).click();
-  await page
-    .locator(".self-stretch.flex-1.flex > div:nth-child(4) > div > .flex-1")
-    .first()
-    .click();
-  await page.getByText("Cash").click();
-  await page.locator(".absolute.object-cover.h-full").first().click();
+  await page.waitForTimeout(500);
   await page.getByRole("button", { name: "Bill", exact: true }).click();
+  await page.waitForTimeout(500);
   await page.getByRole("button", { name: "Complete" }).click();
-  await page.waitForTimeout(2000);
 }
 
 export async function orderTakeAway(page: Page) {
@@ -202,10 +184,10 @@ export async function orderTakeAway(page: Page) {
     .getByTestId("FloorPlanView")
     .getByText("9", { exact: true })
     .click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByText("French Fries").click();
-  await page.getByText("Garlic Bread").click();
-  await page.getByText("Wakame").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("French Fries").first().click();
+  await page.getByText("Garlic Bread").first().click();
+  await page.getByText("Wakame").first().click();
   await page.locator("span").filter({ hasText: "Large - $" }).click();
   await page.getByRole("button", { name: "OK" }).click();
   await page.getByText("Take Away").click();
@@ -226,10 +208,10 @@ export async function orderWithCustomerInfo(page: Page) {
     .getByTestId("FloorPlanView")
     .getByText("9", { exact: true })
     .click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByText("Miso Soup").click();
-  await page.getByText("Spring Rolls").click();
-  await page.getByTestId("OrderViewV2").getByText("Wakame").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("Miso Soup").first().click();
+  await page.getByText("Spring Rolls").first().click();
+  await page.getByText("Wakame").first().click();
   await page.locator("span").filter({ hasText: "Medium - $" }).click();
   await page.getByRole("button", { name: "OK" }).click();
   await page.getByText("Beef Tataki").click();
@@ -329,11 +311,11 @@ export async function orderWithNote(page: Page) {
     .getByTestId("FloorPlanView")
     .getByText("9", { exact: true })
     .click();
-  await page.getByTestId("OrderViewV2").getByText("Samosa").click();
-  await page.getByText("French Fries").click();
-  await page.getByText("Garlic Bread").click();
-  await page.getByText("Tabbouleh").click();
-  await page.getByTestId("OrderViewV2").getByText("Miso Soup").click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("French Fries").first().click();
+  await page.getByText("Garlic Bread").first().click();
+  await page.getByText("Tabbouleh").first().click();
+  await page.getByText("Miso Soup").first().click();
   await page
     .locator(".relative.w-10.h-10.object-cover.mq1440\\:w-12")
     .first()
@@ -411,109 +393,182 @@ export async function orderWithNote(page: Page) {
   await page.waitForTimeout(2000);
 }
 
+export async function orderWithVoucherPayment(page: Page) {
+  await page
+    .getByTestId("FloorPlanView")
+    .getByText("9", { exact: true })
+    .click();
+  await page.getByText("Samosa").first().click();
+  await page.getByText("French Fries").first().click();
+  await page.getByText("Garlic Bread").first().click();
+  await page.getByText("Voucher").first().click();
+  await page.locator(".flex-grow.min-w-\\[20px\\]").first().click();
+  await page.waitForTimeout(200);
+  await page.keyboard.type("12345678", { delay: 100 });
+  await page.getByText("Add").nth(1).click();
+  await page.getByRole("button", { name: "$" }).click();
+  await page.waitForTimeout(2000);
+  await page
+    .getByTestId("FloorPlanView")
+    .getByText("9", { exact: true })
+    .click();
+  await page.getByRole("button", { name: "$" }).click();
+  await page.getByRole("button", { name: "Bill", exact: true }).click();
+  await page.getByRole("button", { name: "Complete" }).click();
+  await page.waitForTimeout(2000);
+}
+
 export async function orderWithSeatMode(page: Page) {
   await page
     .getByTestId("FloorPlanView")
     .getByText("9", { exact: true })
     .click();
   await page.waitForTimeout(300);
-  
-  await page.getByText("Samosa").click();
+
+  await page.getByText("Samosa").first().click();
   await page.waitForTimeout(200);
-  
-  await page.getByText("French Fries").click();
+
+  await page.getByText("French Fries").first().click();
   await page.waitForTimeout(200);
-  
-  await page.getByText("Garlic Bread").click();
+
+  await page.getByText("Garlic Bread").first().click();
   await page.waitForTimeout(200);
-  
-  await page.getByText("Tabbouleh").click();
+
+  await page.getByText("Tabbouleh").first().click();
   await page.waitForTimeout(200);
-  
-  await page.getByText("Miso Soup").click();
+
+  await page.getByText("Miso Soup").first().click();
   await page.waitForTimeout(200);
-  
-  await page.getByText("Spring Rolls").click();
+
+  await page.getByText("Spring Rolls").first().click();
   await page.waitForTimeout(200);
-  
-  await page.getByText("Bruschetta").click();
+
+  await page.getByText("Bruschetta").first().click();
   await page.waitForTimeout(300);
-  
-  await page.getByText("Split Bill").click();
+
+  await page.getByTestId("OrderViewV2").getByText("Split Bill").click();
   await page.waitForTimeout(500);
-  
-  await page.locator("b").filter({ hasText: "Samosa" }).click();
+
+  const orderView = page.getByTestId("OrderViewV2");
+
+  await orderView.locator("b").filter({ hasText: "Samosa" }).click();
   await page.waitForTimeout(150);
-  
-  await page.locator("b").filter({ hasText: "French Fries" }).click();
+
+  await orderView.locator("b").filter({ hasText: "French Fries" }).click();
   await page.waitForTimeout(150);
-  
-  await page.locator("b").filter({ hasText: "Garlic Bread" }).click();
+
+  await orderView.locator("b").filter({ hasText: "Garlic Bread" }).click();
   await page.waitForTimeout(300);
-  
-  await page.getByText("Next").click();
+
+  await orderView.getByText("Next").click();
   await page.waitForTimeout(400);
-  
-  await page.locator("b").filter({ hasText: "Tabbouleh" }).click();
+
+  await orderView.locator("b").filter({ hasText: "Tabbouleh" }).click();
   await page.waitForTimeout(150);
-  
-  await page.locator("b").filter({ hasText: "Miso Soup" }).click();
+
+  await orderView.locator("b").filter({ hasText: "Miso Soup" }).click();
   await page.waitForTimeout(300);
-  
-  await page.getByText("Next").click();
+
+  await orderView.getByText("Next").click();
   await page.waitForTimeout(400);
-  
-  await page.locator("b").filter({ hasText: "Spring Rolls" }).click();
+
+  await orderView.locator("b").filter({ hasText: "Spring Rolls" }).click();
   await page.waitForTimeout(150);
-  
-  await page.locator("b").filter({ hasText: "Bruschetta" }).click();
+
+  await orderView.locator("b").filter({ hasText: "Bruschetta" }).click();
   await page.waitForTimeout(300);
-  
+
   await page.getByText("Done", { exact: true }).click();
   await page.waitForTimeout(500);
-  
+
   await page.getByRole("button", { name: /^\$[\d.]+$/ }).click();
   await page.waitForTimeout(2000);
-  
+
   await page
     .getByTestId("FloorPlanView")
     .getByText("9", { exact: true })
     .click();
   await page.waitForTimeout(300);
-  
+
   await page.getByRole("button", { name: /^\$[\d.]+$/ }).click();
   await page.waitForTimeout(300);
-  
+
   await page.getByText("Cash").click();
   await page.waitForTimeout(300);
-  
+
   await page.getByRole("button", { name: "Bill" }).click();
   await page.waitForTimeout(300);
-  
+
   await page.locator("b").filter({ hasText: "OK" }).click();
   await page.waitForTimeout(500);
-  
+
   await page.getByRole("button", { name: /Seat 2 \$[\d.]+/ }).click();
   await page.waitForTimeout(300);
-  
+
   await page.getByText("Cash").click();
   await page.waitForTimeout(300);
-  
+
   await page.getByRole("button", { name: "Bill" }).click();
   await page.waitForTimeout(300);
-  
+
   await page.locator("b").filter({ hasText: "OK" }).click();
   await page.waitForTimeout(500);
-  
+
   await page.getByRole("button", { name: /Seat 3 \$[\d.]+/ }).click();
   await page.waitForTimeout(300);
-  
+
   await page.getByText("Cash").click();
   await page.waitForTimeout(300);
-  
+
   await page.getByRole("button", { name: "Bill" }).click();
   await page.waitForTimeout(300);
-  
+
+  await page.getByRole("button", { name: "Complete" }).click();
+  await page.waitForTimeout(2000);
+}
+
+export async function buyVoucher(page: Page) {
+  await page
+    .getByTestId("FloorPlanView")
+    .getByText("9", { exact: true })
+    .click();
+  await page.getByTestId("OrderViewV2").getByText("Voucher").click();
+  await page.getByText("Create").click();
+  await page.locator(".flex-grow.min-w-\\[20px\\]").first().click();
+  await page.waitForTimeout(200);
+  await page.keyboard.type("12345678", { delay: 100 });
+  await page
+    .locator(
+      ".relative.cursor-text.h-\\[37px\\].pl-\\[14px\\] > .overflow-auto > .flex-grow",
+    )
+    .first()
+    .click();
+  await page.waitForTimeout(200);
+  await page.keyboard.type("50", { delay: 100 });
+  await page
+    .locator(
+      ".self-stretch.flex.flex-row.items-center > .flex-1.flex.flex-col.items-start.justify-center > .relative.cursor-text > .overflow-auto > .flex-grow",
+    )
+    .click();
+  await page.waitForTimeout(200);
+  await page.keyboard.type("Van A", { delay: 100 });
+  await page
+    .locator(
+      "div:nth-child(2) > .relative.cursor-text > .overflow-auto > .flex-grow",
+    )
+    .click();
+  await page.waitForTimeout(200);
+  await page.keyboard.type("Nguyen", { delay: 100 });
+  await page.getByText("Add").nth(2).click();
+  await page.locator('b').filter({ hasText: 'OK' }).click();
+  await page.getByRole("button", { name: "$" }).click();
+  await page.waitForTimeout(2000);
+  await page
+    .getByTestId("FloorPlanView")
+    .getByText("9", { exact: true })
+    .click();
+  await page.getByRole("button", { name: "$" }).click();
+  await page.getByRole("button", { name: "Bill", exact: true }).click();
   await page.getByRole("button", { name: "Complete" }).click();
   await page.waitForTimeout(2000);
 }

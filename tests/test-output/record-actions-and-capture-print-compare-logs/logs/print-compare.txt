@@ -1,6 +1,0 @@
---- BẮT ĐẦU TEST LÚC 20:45:01 ---
-[20:45:23] ⚠️ [print:compare] No old label scripts in buffer
-[20:45:23] ✅ [print:compare] [kitchen:Kitchen] MATCH — 109 scripts identical (order: 44380hb9thw9)
-[20:45:26] ✅ [print:compare] [invoice] MATCH — 57 scripts identical (order: 44380hck7y0q)
-[20:45:28] ✅ [print:compare] [invoice] MATCH — 57 scripts identical (order: 04380hck7y2n)
-[20:45:29] ✅ [print:compare] [invoice] MATCH — 57 scripts identical (order: 44380hdyi7gi)
