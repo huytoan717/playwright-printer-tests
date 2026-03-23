@@ -9,7 +9,7 @@ import { test } from "./helpers/compare-fixture";
 test.describe("6. Label", () => {
   test.setTimeout(120_000);
 
-  test.skip("Label printing (manual comparison required)", async ({ page }) => {
+  test.skip("Label printing (manual comparison required)", async ({ page, testDir: _testDir }) => {
     // TODO: Create order with items that have label printers assigned → Print
     // So sánh thủ công giữa old và new flow
   });

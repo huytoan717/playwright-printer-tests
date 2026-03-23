@@ -71,7 +71,7 @@ export async function kitchenWithCourses(page: Page) {
 export async function kitchenCancelItems(page: Page) {
   await page
     .getByTestId("FloorPlanView")
-    .getByText("9", { exact: true })
+    .getByText("12")
     .click();
   await page.getByText("Samosa").click();
   await page.getByText("French Fries").click();
@@ -82,7 +82,7 @@ export async function kitchenCancelItems(page: Page) {
   await page.waitForTimeout(1000);
   await page
     .getByTestId("FloorPlanView")
-    .getByText("9", { exact: true })
+    .getByText("12")
     .click();
   await page
     .locator(
@@ -101,7 +101,7 @@ export async function kitchenCancelItems(page: Page) {
 export async function kitchenReprint(page: Page) {
   await page
     .getByTestId("FloorPlanView")
-    .getByText("7", { exact: true })
+    .getByText("13")
     .click();
   await page.getByText("Samosa").click();
   await page.getByText("French Fries").click();
@@ -112,7 +112,7 @@ export async function kitchenReprint(page: Page) {
   await page.waitForTimeout(1000);
   await page
     .getByTestId("FloorPlanView")
-    .getByText("7", { exact: true })
+    .getByText("13")
     .click();
   await page.locator(".relative.w-10.h-10.object-cover.mq1440\\:w-12").click();
   await page.getByText("Reprint to Kitchen").first().click();
@@ -122,7 +122,7 @@ export async function kitchenReprint(page: Page) {
 export async function kitchenWithCustomerInfo(page: Page) {
   await page
     .getByTestId("FloorPlanView")
-    .getByText("7", { exact: true })
+    .getByText("14")
     .click();
   await page.getByTestId("OrderViewV2").getByText("Samosa").click();
   await page.getByTestId("OrderViewV2").getByText("French Fries").click();

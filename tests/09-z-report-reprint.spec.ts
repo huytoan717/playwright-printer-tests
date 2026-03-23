@@ -1,5 +1,8 @@
+import { runInConsole } from "./helpers";
 import { test } from "./helpers/compare-fixture";
-import { reprintZReport } from "./scenarios/print-report";
+import { navigateToInvoiceList, scrollAndCaptureInvoices } from "./scenarios/invoice-management";
+import { normalOrder } from "./scenarios/order";
+import { printZReport, reprintZReport } from "./scenarios/print-report";
 
 /**
  * #9: Z Report Reprint
@@ -10,7 +13,17 @@ import { reprintZReport } from "./scenarios/print-report";
 test.describe("9. Z Report Reprint", () => {
   test.setTimeout(120_000);
 
-  test("Reprint Z Report", async ({ page }) => {
+  test("Reprint Z Report", async ({ page, testDir: _testDir }) => {
+    await normalOrder(page);
+    await printZReport(page);
+    await runInConsole(
+      page,
+      `
+      router.screen = "FloorPlanView";
+      `,
+    );
     await reprintZReport(page);
+    await navigateToInvoiceList(page);
+    await scrollAndCaptureInvoices(page, _testDir);
   });
 });

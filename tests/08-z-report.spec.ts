@@ -1,4 +1,5 @@
 import { test } from "./helpers/compare-fixture";
+import { navigateToInvoiceList, scrollAndCaptureInvoices } from "./scenarios/invoice-management";
 import { normalOrder } from "./scenarios/order";
 import { printZReport } from "./scenarios/print-report";
 
@@ -11,8 +12,10 @@ import { printZReport } from "./scenarios/print-report";
 test.describe("8. Z Report", () => {
   test.setTimeout(120_000);
 
-  test("Print Z Report (close shift)", async ({ page }) => {
+  test("Print Z Report (close shift)", async ({ page, testDir }) => {
     await normalOrder(page);
     await printZReport(page);
+    await navigateToInvoiceList(page);
+    await scrollAndCaptureInvoices(page, testDir);
   });
 });

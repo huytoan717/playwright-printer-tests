@@ -1,4 +1,5 @@
 import { test } from "./helpers/compare-fixture";
+import { navigateToInvoiceList, scrollAndCaptureInvoices } from "./scenarios/invoice-management";
 import { normalOrder } from "./scenarios/order";
 import { printMonthlyReport } from "./scenarios/print-report";
 
@@ -10,8 +11,10 @@ import { printMonthlyReport } from "./scenarios/print-report";
 test.describe("11. Monthly Report", () => {
   test.setTimeout(120_000);
 
-  test("Print Monthly Report", async ({ page }) => {
+  test("Print Monthly Report", async ({ page, testDir }) => {
     await normalOrder(page);
     await printMonthlyReport(page);
+    await navigateToInvoiceList(page);
+    await scrollAndCaptureInvoices(page, testDir);
   });
 });

@@ -37,7 +37,8 @@ export async function scrollAndCaptureInvoices(page: Page, testDir: string) {
 
     for (let i = 0; i < count; i++) {
       const invoice = visibleInvoices.nth(i);
-      const index = await invoice.getAttribute("data-index");
+      // Virtual list có thể báo count lớn hơn số phần tử thực sự render
+      const index = await invoice.getAttribute("data-index", { timeout: 2000 }).catch(() => null);
 
       if (index !== null && !capturedInvoices.has(index)) {
         await invoice.scrollIntoViewIfNeeded();

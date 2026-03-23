@@ -17,7 +17,7 @@ test.describe("12. Voucher", () => {
     await scrollAndCaptureInvoices(page, testDir);
   });
 
-  test.skip("Print single voucher from management", async ({ page }) => {
+  test.skip("Print single voucher from management", async ({ page, testDir: _testDir }) => {
     await createVoucher(page);
     await printSingleVoucher(page);
   });

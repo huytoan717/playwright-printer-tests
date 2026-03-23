@@ -9,3 +9,4 @@ node_modules/
 
 # Test output (ảnh, log)
 tests/test-output/
+test-output/
